@@ -48,6 +48,7 @@ class _MyButtonState extends State<MyButton> {
           ZoomTapAnimation(
             onTap: () {
               setState(() {
+                
                 widget.count++;
               });
             },

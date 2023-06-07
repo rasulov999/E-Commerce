@@ -14,18 +14,19 @@ class BasketScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Basket screen"),
         centerTitle: true,
-        actions: [
-          // IconButton(
-          //     onPressed: () {
-          //       context.read<UsersBloc>().add(AddUsers(
-          //           usersModel: UsersModel(
-          //               id: "",
-          //               imgUrl:
-          //                   "https://cdn-icons-png.flaticon.com/512/1946/1946429.png",
-          //               name: "Ali"))); // Navigator.push(
-          //     },
-          //     icon: Icon(Icons.arrow_forward_outlined))
-        ],
+        // actions: [
+        //   IconButton(
+        //       onPressed: () {
+        //         context.read<UsersBloc>().add(AddUsers(
+        //             usersModel: UsersModel(
+        //                 id: "",
+        //                 imgUrl:
+        //                     "https://cdn-icons-png.flaticon.com/512/1946/1946429.png",
+        //                 name: "Toxir",
+        //                 orders: []))); // Navigator.push(
+        //       },
+        //       icon: Icon(Icons.arrow_forward_outlined))
+        // ],
       ),
       body: BlocBuilder<GetUsersCubit, GetUsersState>(
         builder: (context, state) {
