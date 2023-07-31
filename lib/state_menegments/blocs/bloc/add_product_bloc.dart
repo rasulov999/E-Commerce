@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_task/data/models/products/products_model.dart';
+import 'package:flutter_task/data/models/product/product_model.dart';
 import 'package:flutter_task/data/repository/products_repository.dart';
 
 part 'add_product_event.dart';
@@ -16,7 +16,7 @@ class AddProductBloc extends Bloc<AddProductEvent, AddProductState> {
   _addProduct(AddProducts event, Emitter<AddProductState> emit) async {
     emit(state.copyWith(status: FormStatus.loading));
     var newCoffee =
-        productsRepository.addProducts(productsModel: event.productsModel);
+        productsRepository.addProducts(productModel: event.productModel);
     if (newCoffee != null) {
       emit(
         state.copyWith(status: FormStatus.creatingInSuccess),

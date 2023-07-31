@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_task/data/models/product/product_model.dart';
 import 'package:flutter_task/data/models/products/products_model.dart';
 
 class ProductsRepository {
@@ -6,10 +7,10 @@ class ProductsRepository {
       : _firestore = firebaseFirestore;
   final FirebaseFirestore _firestore;
 
-  Future<bool> addProducts({required ProductsModel productsModel}) async {
+  Future<bool> addProducts({required ProductModel productModel}) async {
     try {
       DocumentReference documentReference =
-          await _firestore.collection("products").add(productsModel.toJson());
+          await _firestore.collection("products").add(productModel.toJson());
       await _firestore
           .collection("products")
           .doc(documentReference.id)
@@ -21,18 +22,18 @@ class ProductsRepository {
     }
   }
 
-  Future<void> updateProdduct({required ProductsModel productsModel}) async {
+  Future<void> updateProdduct({required ProductsModel productModel}) async {
     try {
       await _firestore
           .collection("products")
-          .doc(productsModel.id)
-          .update(productsModel.toJson());
+          .doc(productModel.id)
+          .update(productModel.toJson());
     } on FirebaseException catch (e) {
       print("ERROR=======================$e");
     }
   }
 
-  Stream<List<ProductsModel>> getProducts() =>
+  Stream<List<ProductModel>> getProducts() =>
       _firestore.collection("products").snapshots().map((event) =>
-          event.docs.map((e) => ProductsModel.fromJson(e.data())).toList());
+          event.docs.map((e) => ProductModel.fromJson(e.data())).toList());
 }

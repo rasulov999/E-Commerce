@@ -28,7 +28,7 @@ enum FormStatus {
   loading,
   success,
   failure,
-   creatingInProgress,
+  creatingInProgress,
   creatingInSuccess,
   creatingInFailure,
 }

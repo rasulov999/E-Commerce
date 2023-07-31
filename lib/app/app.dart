@@ -1,9 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_task/data/repository/auth_repository.dart';
 import 'package:flutter_task/data/repository/products_repository.dart';
 import 'package:flutter_task/data/repository/users_repository.dart';
 import 'package:flutter_task/screens/navbar/bottom_navbar.dart';
+import 'package:flutter_task/screens/option/option_screen.dart';
+import 'package:flutter_task/screens/splash/splash_screen.dart';
+import 'package:flutter_task/state_menegments/blocs/auth/auth_bloc_bloc.dart';
 import 'package:flutter_task/state_menegments/blocs/bloc/add_product_bloc.dart';
 import 'package:flutter_task/state_menegments/blocs/users/users_bloc.dart';
 import 'package:flutter_task/state_menegments/cubits/get_products/get_products_cubit.dart';
@@ -23,9 +28,17 @@ class App extends StatelessWidget {
           RepositoryProvider(
               create: (context) => UsersRepository(
                   firebaseFirestore: FirebaseFirestore.instance)),
+          RepositoryProvider(
+              create: (context) => AuthRepository(
+                  firebaseAuth: FirebaseAuth.instance,
+                  firebaseFirestore: FirebaseFirestore.instance))
         ],
         child: MultiBlocProvider(
           providers: [
+            BlocProvider(
+              create: (context) => AuthBlocBloc(context.read<AuthRepository>()),
+              child: Container(),
+            ),
             BlocProvider(
               create: (context) => NavbarCubit(),
             ),
@@ -59,7 +72,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BottomNavBar(),
+      home: SplashScreen(),
     );
   }
 }

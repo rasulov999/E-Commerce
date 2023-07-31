@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_task/screens/navbar/basket/basket_screen.dart';
+import 'package:flutter_task/screens/navbar/cart/basket_screen.dart';
 import 'package:flutter_task/screens/navbar/home/home_screen.dart';
 import 'package:flutter_task/screens/navbar/profile/profile_screen.dart';
 import 'package:flutter_task/state_menegments/cubits/navbar_cubit.dart';

@@ -7,9 +7,9 @@ class InitialProductsState extends GetProductsState {}
 class LoadProductsProgress extends GetProductsState {}
 
 class LoadProductsInSuccess extends GetProductsState {
-  LoadProductsInSuccess({required this.productsModel});
+  LoadProductsInSuccess({required this.productModel});
 
-  final List<ProductsModel> productsModel;
+  final List<ProductModel> productModel;
 }
 
 class LoadProductsInFailure extends GetProductsState {
